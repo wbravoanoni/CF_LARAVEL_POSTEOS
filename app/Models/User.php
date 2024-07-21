@@ -76,6 +76,14 @@ class User extends Authenticatable
     public function friends(){
         return $this->friendsFrom->merge($this->friendsTo);
     }
+
+    public function isRelated(User $user){
+        if( auth()->user()->id === $user->id){
+            return true;
+        }else{
+            return $this->from()->where('to_id',$user->id)->exists() || $this->to()->where('from_id',$user->id)->exists();
+        }
+    }
     
     
 }
