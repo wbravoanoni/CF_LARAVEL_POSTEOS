@@ -1,7 +1,8 @@
 <x-app-layout>
     <x-container>
 
-        <form action="" class="px-4 mb-8">
+        <form action="{{route('posts.store')}}" method="POST" class="px-4 mb-8">
+            @csrf
             <textarea name="body" id="" rows="2" 
             class="w-full mb-2 p-0 text-white bg-transparent border-0 border-b-2 border-slate-800 focus:border-b-slate-700 focus:ring-0 resize-none overflow-hidden" placeholder="Your comment..."></textarea>
             <input type="submit" value="Submit"

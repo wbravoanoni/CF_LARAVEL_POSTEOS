@@ -11,7 +11,7 @@ class PageController extends Controller
 
         if( $request->get('for-my') ){
             //$posts = Post::where('user_id', $request->user()->id)->get(); 
-            $posts = $request->user()->posts;
+            $posts = $request->user()->posts()->latest()->get();
         }else{
             $posts = Post::latest()->get(); 
         }
