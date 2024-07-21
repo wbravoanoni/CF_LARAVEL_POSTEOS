@@ -50,11 +50,11 @@ class User extends Authenticatable
     }
 
     public function from(){
-        return $this->BelongsToMany(User::class,'friends','from_id','to_id');
+        return $this->belongsToMany(User::class,'friends','from_id','to_id');
     }
 
     public function to(){
-        return $this->BelongsToMany(User::class,'friends','to_id','from_id');
+        return $this->belongsToMany(User::class,'friends','to_id','from_id');
     }
 
     public function friendsFrom(){
@@ -63,6 +63,14 @@ class User extends Authenticatable
 
     public function friendsTo(){
         return $this->to()->wherePivot('accepted', true);
+    }
+
+    public function pendingFrom(){
+        return $this->from()->wherePivot('accepted', false);
+    }
+
+    public function pendingTo(){
+        return $this->to()->wherePivot('accepted', false);
     }
     
     

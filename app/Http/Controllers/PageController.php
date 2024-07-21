@@ -25,9 +25,17 @@ class PageController extends Controller
         return view('dashboard', compact('posts'));
     }
 
-    public function profile(User $user){
+    public function profile(User $user) {
         $posts = $user->posts()->latest()->get();
-        return view('profile',compact('user','posts'));
+        return view('profile', compact('user', 'posts'));
+    }
+
+    public function status(Request $request){
+
+        $requests = $request->user()->pendingTo;
+        $sent = $request->user()->pendingFrom;
+
+        return view('status',compact('requests','sent'));
     }
 
 }

@@ -1,11 +1,12 @@
 <x-app-layout>
     <x-container>
 
-        <form action="{{route('friends.store',$user)}}" method="POST" class="px-4 mb-8">
+        <form action="{{ route('friends.store', $user) }}" method="POST" class="px-4 mb-8">
             @csrf
-            <input type="submit"
-            class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold sm:rounded-lg text-xs"
-            value="Add friend">
+            
+            <x-submit-button>
+                Add friend
+            </x-submit-button>
 
         </form>
 
