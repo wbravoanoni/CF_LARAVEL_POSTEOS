@@ -72,6 +72,10 @@ class User extends Authenticatable
     public function pendingTo(){
         return $this->to()->wherePivot('accepted', false);
     }
+
+    public function friends(){
+        return $this->friendsFrom->merge($this->friendsTo);
+    }
     
     
 }
