@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-container>
 
+        <h2 class="text-lg mb-4 text-gray-500">{{$user->name}}</h2>
+
         @if( !auth()->user()->isRelated($user) )
 
         <form action="{{ route('friends.store', $user) }}" method="POST" class="px-4 mb-8">
